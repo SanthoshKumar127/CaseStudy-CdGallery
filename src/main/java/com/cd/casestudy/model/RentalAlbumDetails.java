@@ -17,7 +17,7 @@ public class RentalAlbumDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long hireId;
-	//TODO: convert to FK
+	//TODO: convert to FK.
 	@Column(name="customer_id")
 	private long customerId;
 	@ManyToOne
