@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Album {
 	
 	@Id
-	@Column(name = "album_id")
+	//@Column(name = "album_id")
 	//@OneToMany(targetEntity = RentalAlbumDetails.class)
 	private long albumId;
 	@Column(name = "category_id")

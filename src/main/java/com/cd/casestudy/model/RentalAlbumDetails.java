@@ -17,9 +17,9 @@ public class RentalAlbumDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long hireId;
-	//TODO: convert to FK.
-	@Column(name="customer_id")
-	private long customerId;
+	@ManyToOne
+	@JoinColumn(name="customer_id")
+	private Customer customer;
 	@ManyToOne
 	@JoinColumn(name="album_id")
 	private Album album;
@@ -44,12 +44,12 @@ public class RentalAlbumDetails {
 		this.hireId = hireId;
 	}
 
-	public long getCustomerId() {
-		return customerId;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Album getAlbum() {
