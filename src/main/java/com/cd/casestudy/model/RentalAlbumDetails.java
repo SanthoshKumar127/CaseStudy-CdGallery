@@ -19,7 +19,7 @@ public class RentalAlbumDetails {
 	private long hireId;
 	@ManyToOne
 	@JoinColumn(name="customer_id")
-	private Customer customer;
+	private User customer;
 	@ManyToOne
 	@JoinColumn(name="album_id")
 	private Album album;
@@ -36,6 +36,19 @@ public class RentalAlbumDetails {
 		super();
 	}
 
+	public RentalAlbumDetails(User customer, Album album, String hireDate, String returnDate,
+			String status, double totlaHirePrice) {
+		super();
+		this.customer = customer;
+		this.album = album;
+		this.hireDate = hireDate;
+		this.returnDate = returnDate;
+		this.status = status;
+		this.totlaHirePrice = totlaHirePrice;
+	}
+
+
+
 	public long getHireId() {
 		return hireId;
 	}
@@ -44,11 +57,11 @@ public class RentalAlbumDetails {
 		this.hireId = hireId;
 	}
 
-	public Customer getCustomer() {
+	public User getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(User customer) {
 		this.customer = customer;
 	}
 
@@ -90,6 +103,13 @@ public class RentalAlbumDetails {
 
 	public void setTotlaHirePrice(double totlaHirePrice) {
 		this.totlaHirePrice = totlaHirePrice;
+	}
+
+	@Override
+	public String toString() {
+		return "RentalAlbumDetails [hireId=" + hireId + ", customer=" + customer + ", album=" + album + ", hireDate="
+				+ hireDate + ", returnDate=" + returnDate + ", status=" + status + ", totlaHirePrice=" + totlaHirePrice
+				+ "]";
 	}
 	
 	

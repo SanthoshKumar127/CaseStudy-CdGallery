@@ -1,26 +1,48 @@
 package com.cd.casestudy.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Customer {
+public class User {
 
 	@Id
+	@Column(name="customer_id")
 	private long customerId;
+	@Column(name="password")
 	private String password;
+	@Column(name="first_name")
 	private String first_name;
+	@Column(name="last_name")
 	private String last_name;
+	@Column(name="date_of_birth")
 	private String dateOfBirth;
+	@Column(name="address")
 	private String address;
+	@Column(name="contact_number")
 	private long contactNumber;
+	@Column(name="credit_card_number")
 	private long creditCardNumber;
+	@Column(name="credit_card_type")
 	private String creditCardType;
+	@Column(name="credit_card_expiry")
 	private String creditCardExpity;
 	
-	public Customer() {
+	public User() {
 		super();
 	}
+	
+	
+
+	public User(long customerId, String password) {
+		super();
+		this.customerId = customerId;
+		this.password = password;
+	}
+
+
 
 	public long getCustomerId() {
 		return customerId;
@@ -100,6 +122,16 @@ public class Customer {
 
 	public void setCreditCardExpity(String creditCardExpity) {
 		this.creditCardExpity = creditCardExpity;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "User [customerId=" + customerId + ", password=" + password + ", first_name=" + first_name
+				+ ", last_name=" + last_name + ", dateOfBirth=" + dateOfBirth + ", address=" + address
+				+ ", contactNumber=" + contactNumber + ", creditCardNumber=" + creditCardNumber + ", creditCardType="
+				+ creditCardType + ", creditCardExpity=" + creditCardExpity + "]";
 	}
 	
 	

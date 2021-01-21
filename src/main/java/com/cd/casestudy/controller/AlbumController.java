@@ -45,15 +45,7 @@ public class AlbumController {
 		Optional<Album> addAlbum = albumRepository.findById(albumId);
 		return ResponseEntity.ok().body(addAlbum);
 	}
-	
-	//Get a album Details by  Category ID
-	/*
-	@GetMapping("/addAlbum/CategoryId/{categoryId}")
-	public ResponseEntity<Optional<Album>> getAlbumByCategoryId(@PathVariable (value = "categoryId")long categoryId){
-		Optional<Album> Album = AlbumRepository.findById(categoryId);
-		return ResponseEntity.ok().body(Album);
-	}*/
-	
+		
 	// update album Details
 	@PutMapping("/album/{id}")
 	public ResponseEntity<Album> updateAlbum(@PathVariable(value = "id")long albumId, @RequestBody Album albumDetails) throws ResourceNotFound {

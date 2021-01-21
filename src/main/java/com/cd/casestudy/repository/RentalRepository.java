@@ -6,4 +6,5 @@ import com.cd.casestudy.model.RentalAlbumDetails;
 
 public interface RentalRepository extends JpaRepository<RentalAlbumDetails, Long>{
 
+	
 }

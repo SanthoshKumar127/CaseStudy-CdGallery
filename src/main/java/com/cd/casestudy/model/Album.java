@@ -11,8 +11,6 @@ import javax.persistence.Table;
 public class Album {
 	
 	@Id
-	//@Column(name = "album_id")
-	//@OneToMany(targetEntity = RentalAlbumDetails.class)
 	private long albumId;
 	@Column(name = "category_id")
 	private long categoryId;
@@ -85,6 +83,12 @@ public class Album {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Album [albumId=" + albumId + ", categoryId=" + categoryId + ", albumTitle=" + albumTitle
+				+ ", hirePrice=" + hirePrice + ", noOfCd=" + noOfCd + ", status=" + status + "]";
 	}
 	
 	
