@@ -86,4 +86,22 @@ public class AlbumController {
 		}
 		
 	}
+	
+	@PutMapping("/noofcd")
+	public void updateCd(@PathVariable(value = "id")long albumId, @RequestBody Album albumDetails) throws ResourceNotFound {
+		Optional<Album> album = albumRepository.findById(albumId);
+		
+
+		if(!album.isPresent()==true)
+		{
+			throw new ResourceNotFound("Album is not available in this albumId :" + albumId);
+		}
+		else
+		{
+			Album album2 = album.get();
+			int cd = album2.getNoOfCd() - 1;
+			album2.setNoOfCd(cd);
+			
+		}
+	}
 }

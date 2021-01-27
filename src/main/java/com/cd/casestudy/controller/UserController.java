@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cd.casestudy.exception.ResourceNotFound;
 import com.cd.casestudy.model.User;
 import com.cd.casestudy.repository.UserRepository;
 import com.cd.casestudy.serviceImp.ValidatorImpl;
@@ -26,9 +27,13 @@ public class UserController {
 	private UserRepository userRepository;
     
 	@PostMapping("/login")
-	public void userLoginCredentials(@RequestParam String email, @RequestParam String password) {
+	public void userLoginCredentials(@RequestParam String email, @RequestParam String password) throws ResourceNotFound {
 		validatorImpl.userValidate(email, password);
-		
+	}
+	
+	@PostMapping("/registration")
+	public void newUser(@RequestBody User newUser) {
+		userRepository.save(newUser);
 	}
 
 }
