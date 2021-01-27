@@ -25,6 +25,7 @@ public class AlbumController {
 	
 	@Autowired
 	private AlbumRepository albumRepository;
+
 	
 	//create Get all alum List
 	@GetMapping("/album")
@@ -45,6 +46,8 @@ public class AlbumController {
 		Optional<Album> addAlbum = albumRepository.findById(albumId);
 		return ResponseEntity.ok().body(addAlbum);
 	}
+	
+
 		
 	// update album Details
 	@PutMapping("/album/{id}")

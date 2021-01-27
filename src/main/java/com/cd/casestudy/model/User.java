@@ -2,54 +2,68 @@ package com.cd.casestudy.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+@Table(name="user")
 public class User {
 
 	@Id
-	@Column(name="customer_id")
-	private long customerId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
+	private long userId;
+	@Column(name="role_id")
+	private int roleId;
+	@Column(name="role_name")
+	private String roleName;
+	@Column(name="email")
+	private String email;
 	@Column(name="password")
 	private String password;
 	@Column(name="first_name")
-	private String first_name;
+	private String first_Name;
 	@Column(name="last_name")
-	private String last_name;
-	@Column(name="date_of_birth")
-	private String dateOfBirth;
+	private String lastName;
 	@Column(name="address")
 	private String address;
-	@Column(name="contact_number")
-	private long contactNumber;
-	@Column(name="credit_card_number")
-	private long creditCardNumber;
-	@Column(name="credit_card_type")
-	private String creditCardType;
-	@Column(name="credit_card_expiry")
-	private String creditCardExpity;
 	
 	public User() {
 		super();
 	}
 	
-	
-
-	public User(long customerId, String password) {
-		super();
-		this.customerId = customerId;
-		this.password = password;
+	public long getUserId() {
+		return userId;
 	}
 
-
-
-	public long getCustomerId() {
-		return customerId;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -60,28 +74,20 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirst_Name() {
+		return first_Name;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirst_Name(String first_Name) {
+		this.first_Name = first_Name;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-
-	public String getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getAddress() {
@@ -92,47 +98,14 @@ public class User {
 		this.address = address;
 	}
 
-	public long getContactNumber() {
-		return contactNumber;
-	}
-
-	public void setContactNumber(long contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-
-	public long getCreditCardNumber() {
-		return creditCardNumber;
-	}
-
-	public void setCreditCardNumber(long creditCardNumber) {
-		this.creditCardNumber = creditCardNumber;
-	}
-
-	public String getCreditCardType() {
-		return creditCardType;
-	}
-
-	public void setCreditCardType(String creditCardType) {
-		this.creditCardType = creditCardType;
-	}
-
-	public String getCreditCardExpity() {
-		return creditCardExpity;
-	}
-
-	public void setCreditCardExpity(String creditCardExpity) {
-		this.creditCardExpity = creditCardExpity;
-	}
-
-
-
 	@Override
 	public String toString() {
-		return "User [customerId=" + customerId + ", password=" + password + ", first_name=" + first_name
-				+ ", last_name=" + last_name + ", dateOfBirth=" + dateOfBirth + ", address=" + address
-				+ ", contactNumber=" + contactNumber + ", creditCardNumber=" + creditCardNumber + ", creditCardType="
-				+ creditCardType + ", creditCardExpity=" + creditCardExpity + "]";
+		return "User [userId=" + userId + ", roleId=" + roleId + ", roleName=" + roleName + ", email=" + email
+				+ ", password=" + password + ", first_Name=" + first_Name + ", lastName=" + lastName + ", address="
+				+ address + "]";
 	}
+
 	
+
 	
 }

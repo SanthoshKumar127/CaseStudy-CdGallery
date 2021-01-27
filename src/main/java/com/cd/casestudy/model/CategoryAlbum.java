@@ -1,5 +1,6 @@
 package com.cd.casestudy.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -10,9 +11,11 @@ import javax.persistence.Table;
 public class CategoryAlbum {
 	
 	@Id
-	//@OneToMany(targetEntity = Album.class)
+	@Column(name="category_id")
 	private long categoryId;
+	@Column(name="category_name")
 	private String categoryName;
+	@Column(name="category_description")
 	private String categoryDescription;
 	
 	public CategoryAlbum() {

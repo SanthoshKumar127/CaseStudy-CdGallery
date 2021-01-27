@@ -18,7 +18,8 @@ import com.cd.casestudy.repository.RentalRepository;
 public class RentalDetailsController<E> {
 
 	@Autowired
-	public RentalRepository rentalRepository;
+	private RentalRepository rentalRepository;
+	
 	
 	
 	//Get the rental details

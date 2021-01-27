@@ -7,5 +7,5 @@ import com.cd.casestudy.model.User;
 
 public interface Validator {
 
-	public void userValidate(long customer_id, String password);
+	public void userValidate(String email, String password);
 }

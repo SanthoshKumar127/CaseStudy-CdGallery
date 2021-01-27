@@ -1,6 +1,8 @@
 package com.cd.casestudy.model;
 
 
+import java.util.Optional;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,38 +17,26 @@ import javax.persistence.Table;
 public class RentalAlbumDetails {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long hireId;
-	@ManyToOne
-	@JoinColumn(name="customer_id")
-	private User customer;
-	@ManyToOne
+	@ManyToOne(targetEntity = User.class)
+	@JoinColumn(name="user_id")
+	private User user;
+	@ManyToOne(targetEntity = Album.class)
 	@JoinColumn(name="album_id")
 	private Album album;
 	@Column(name="hire_date")
 	private String hireDate;
-	@Column(name="return_date")
-	private String returnDate;
+	@Column(name="no_of_days")
+	private int noOfDays;
 	@Column(name="status")
 	private String status;
-	@Column(name="total_hire_price")
-	private double totlaHirePrice;
+	@Column(name="total_price")
+	private double totalPrice;
 
 	public RentalAlbumDetails() {
 		super();
 	}
-
-	public RentalAlbumDetails(User customer, Album album, String hireDate, String returnDate,
-			String status, double totlaHirePrice) {
-		super();
-		this.customer = customer;
-		this.album = album;
-		this.hireDate = hireDate;
-		this.returnDate = returnDate;
-		this.status = status;
-		this.totlaHirePrice = totlaHirePrice;
-	}
-
 
 
 	public long getHireId() {
@@ -57,12 +47,12 @@ public class RentalAlbumDetails {
 		this.hireId = hireId;
 	}
 
-	public User getCustomer() {
-		return customer;
+	public User getUser() {
+		return user;
 	}
 
-	public void setCustomer(User customer) {
-		this.customer = customer;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Album getAlbum() {
@@ -81,12 +71,12 @@ public class RentalAlbumDetails {
 		this.hireDate = hireDate;
 	}
 
-	public String getReturnDate() {
-		return returnDate;
+	public int getNoOfDays() {
+		return noOfDays;
 	}
 
-	public void setReturnDate(String returnDate) {
-		this.returnDate = returnDate;
+	public void setNoOfDays(int noOfDays) {
+		this.noOfDays = noOfDays;
 	}
 
 	public String getStatus() {
@@ -97,18 +87,18 @@ public class RentalAlbumDetails {
 		this.status = status;
 	}
 
-	public double getTotlaHirePrice() {
-		return totlaHirePrice;
+	public double gettotalPrice() {
+		return totalPrice;
 	}
 
-	public void setTotlaHirePrice(double totlaHirePrice) {
-		this.totlaHirePrice = totlaHirePrice;
+	public void settotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	@Override
 	public String toString() {
-		return "RentalAlbumDetails [hireId=" + hireId + ", customer=" + customer + ", album=" + album + ", hireDate="
-				+ hireDate + ", returnDate=" + returnDate + ", status=" + status + ", totlaHirePrice=" + totlaHirePrice
+		return "RentalAlbumDetails [hireId=" + hireId + ", User=" + user + ", album=" + album + ", hireDate="
+				+ hireDate + ", noOfDays=" + noOfDays + ", status=" + status + ", totalPrice=" + totalPrice
 				+ "]";
 	}
 	

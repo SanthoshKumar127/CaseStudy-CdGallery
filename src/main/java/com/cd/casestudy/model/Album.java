@@ -27,16 +27,6 @@ public class Album {
 		super();
 	}
 
-	public Album(long albumId, int categoryId, String albumTitle, double hirePrice, int noOfCd, String status) {
-		super();
-		this.albumId = albumId;
-		this.categoryId = categoryId;
-		this.albumTitle = albumTitle;
-		this.hirePrice = hirePrice;
-		this.noOfCd = noOfCd;
-		this.status = status;
-	}
-
 	public long getAlbumId() {
 		return albumId;
 	}
