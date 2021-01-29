@@ -1,39 +1,33 @@
-package com.cd.casestudy.model;
+package com.cd.casestudy.ulitity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class UserRegistration {
 
-@Entity
-@Table(name="user")
-public class User {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_id")
 	private long userId;
-	@Column(name="role_id")
 	private int roleId;
-	@Column(name="role_name")
 	private String roleName;
-	@Column(name="email")
 	private String email;
-	@Column(name="password")
 	private String password;
-	@Column(name="first_name")
 	private String firstName;
-	@Column(name="last_name")
 	private String lastName;
-	@Column(name="address")
 	private String address;
 	
-	public User() {
+	public UserRegistration() {
 		super();
 	}
-	
+
+	public UserRegistration(long userId, int roleId, String roleName, String email, String password, String firstName,
+			String lastName, String address) {
+		super();
+		this.userId = userId;
+		this.roleId = roleId;
+		this.roleName = roleName;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+	}
+
 	public long getUserId() {
 		return userId;
 	}
@@ -74,12 +68,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirst_Name() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirst_Name(String first_Name) {
-		this.firstName = first_Name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
@@ -97,15 +91,7 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", roleId=" + roleId + ", roleName=" + roleName + ", email=" + email
-				+ ", password=" + password + ", first_Name=" + firstName + ", lastName=" + lastName + ", address="
-				+ address + "]";
-	}
-
 	
-
+	
 	
 }

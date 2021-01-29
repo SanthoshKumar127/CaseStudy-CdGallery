@@ -11,6 +11,5 @@ import com.cd.casestudy.model.Album;
 
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Long>{
-
-	Optional<Album> findById(long albumId);
+ 
 }

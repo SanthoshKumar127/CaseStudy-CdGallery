@@ -21,49 +21,9 @@ import com.cd.casestudy.service.Validator;
 
 @Service
 public class ValidatorImpl implements Validator {
-	
-	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private AlbumRepository albumRepository;
-	@Autowired
-	private AlbumController albumController;
-	
-	@Autowired
-	private CustomerImp customerImp;
-	
-	@Autowired
-     private RentalDetailsController rentalDetailsController;
-	
-	@Autowired
-	private UserImp userImp;
-	
+
 	@Override
 	public void userValidate(String email, String password) throws ResourceNotFound {
+		// TODO Auto-generated method stub
 		
-		Scanner scan = new Scanner(System.in);
-		int s1;
-		//customerImp.CustomerValidation(email, password);
-		List userOpt = userRepository.loginCredentials(email, password);
-		if(!userOpt.isEmpty())
-		{
-		System.out.println(userOpt);
-		User user = userRepository.findByEmail(email);
-		if(user.getRoleId()==1)
-		{
-			
-				//System.out.println("User Authenticated");
-				userImp.adminOperation();
-		}
-		else
-		{
-			customerImp.customerOperation();
-		}
-		}
-		else
-		{
-			System.out.println("Incorrect customer_id and password");
-		}
-	}
-	
-}
+	}}
