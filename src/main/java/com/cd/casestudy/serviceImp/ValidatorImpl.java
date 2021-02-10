@@ -13,7 +13,7 @@ import com.cd.casestudy.controller.AlbumController;
 import com.cd.casestudy.controller.RentalDetailsController;
 import com.cd.casestudy.exception.ResourceNotFound;
 import com.cd.casestudy.model.Album;
-import com.cd.casestudy.model.RentalAlbumDetails;
+import com.cd.casestudy.model.RentalDetails;
 import com.cd.casestudy.model.User;
 import com.cd.casestudy.repository.AlbumRepository;
 import com.cd.casestudy.repository.UserRepository;

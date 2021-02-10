@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.cd.casestudy.model.CategoryAlbum;
-import com.cd.casestudy.repository.CategoryRepository;
+import com.cd.casestudy.dto.CategoryDTO;
+import com.cd.casestudy.model.Category;
 import com.cd.casestudy.serviceImp.CategoryService;
 
 @RestController
@@ -21,18 +20,18 @@ public class CategoryController {
 	@Autowired
 	CategoryService categoryService;
 	
-	// get all category
+	// get all category -- working
 	@GetMapping("/category")
-	public List getAllCategory()
+	public List<CategoryDTO> getAllCategory()
 	{
 		return categoryService.getAllCategory();
 	}
 	
 	//save the new category
 	@PostMapping("/new-category")
-	public void newCategory(CategoryAlbum categoryAlbum)
+	public Category newCategory(@RequestBody CategoryDTO dto)
 	{
-		categoryService.newCategory(categoryAlbum);
+		return categoryService.newCategory(dto);
 	}
 	
 }

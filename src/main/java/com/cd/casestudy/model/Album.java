@@ -1,19 +1,28 @@
-package com.cd.casestudy.model;
+ package com.cd.casestudy.model;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "album")
 public class Album {
 	
 	@Id
+	@Column(name="album_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long albumId;
-	@Column(name = "category_id")
-	private long categoryId;
+	@ManyToOne(targetEntity = Category.class)
+	@JoinColumn(name = "category_id")
+	private Category category;
 	@Column(name = "album_title")
 	private String albumTitle;
 	@Column(name = "hire_price")
@@ -23,6 +32,11 @@ public class Album {
 	@Column(name = "status")
 	private String status;
 	
+	
+	@OneToMany(mappedBy = "album")
+	List<RentalDetails> rental;
+	
+
 	public Album() {
 		super();
 	}
@@ -35,12 +49,12 @@ public class Album {
 		this.albumId = albumId;
 	}
 
-	public long getCategoryId() {
-		return categoryId;
+	public Category getCategoryId() {
+		return category;
 	}
 
-	public void setCategoryId(long categoryId) {
-		this.categoryId = categoryId;
+	public void setCategoryId(Category category) {
+		this.category = category;
 	}
 
 	public String getAlbumTitle() {
@@ -75,12 +89,4 @@ public class Album {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Album [albumId=" + albumId + ", categoryId=" + categoryId + ", albumTitle=" + albumTitle
-				+ ", hirePrice=" + hirePrice + ", noOfCd=" + noOfCd + ", status=" + status + "]";
-	}
-	
-	
-	
 }

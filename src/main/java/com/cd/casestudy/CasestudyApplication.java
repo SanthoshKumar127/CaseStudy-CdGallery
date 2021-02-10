@@ -10,4 +10,5 @@ public class CasestudyApplication {
 		SpringApplication.run(CasestudyApplication.class, args);
 	}
 	
+	
 }

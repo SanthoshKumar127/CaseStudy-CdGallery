@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.cd.casestudy.model.RentalAlbumDetails;
+import com.cd.casestudy.converter.RentalConverter;
+import com.cd.casestudy.dto.RentalDetailsDTO;
+import com.cd.casestudy.model.RentalDetails;
 import com.cd.casestudy.repository.RentalRepository;
 
 @Service
@@ -15,13 +17,18 @@ public class RenatalDetailsService {
 	@Autowired
 	RentalRepository rentalRepository;
 	
-	public void newRentalDetails(@RequestBody RentalAlbumDetails rentalAlbumDetails)
+	@Autowired
+	RentalConverter rentalConverter;
+	
+	public void newRentalDetails(@RequestBody RentalDetailsDTO rentalAlbumDetails)
 	{
-		rentalRepository.save(rentalAlbumDetails);
+		RentalDetails rental =  rentalConverter.dtoToEntity(rentalAlbumDetails);
+		rentalRepository.save(rental);
 	}
 	
-	public List getAllRentalDetails()
+	public List<RentalDetailsDTO> getAllRentalDetails()
 	{
-		return rentalRepository.findAll();
+		List<RentalDetails> rental = rentalRepository.findAll();
+		return rentalConverter.entityToDto(rental);
 	}
 }

@@ -1,8 +1,5 @@
 package com.cd.casestudy.model;
 
-
-import java.util.Optional;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="rental_details")
-public class RentalAlbumDetails {
+public class RentalDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +31,7 @@ public class RentalAlbumDetails {
 	@Column(name="total_price")
 	private double totalPrice;
 
-	public RentalAlbumDetails() {
+	public RentalDetails() {
 		super();
 	}
 

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cd.casestudy.converter.UserConverter;
+import com.cd.casestudy.dto.UserDTO;
 import com.cd.casestudy.model.User;
 import com.cd.casestudy.repository.UserRepository;
 
@@ -16,18 +18,23 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public void newUser(@RequestBody User user) {
-		userRepository.save(user);
+	@Autowired
+	UserConverter userConverter;
+	
+	public void newUser(@RequestBody UserDTO user) {
+		User newUser = userConverter.dtoToEntity(user);
+		userRepository.save(newUser);
 	}
 	
-    public List loginCredentials(@RequestParam String email, @RequestParam String password)
+    public List<User> loginCredentials(@RequestParam String email, @RequestParam String password)
     {
-    	List userOpt = userRepository.loginCredentials(email, password);
+    	List<User> userOpt = userRepository.loginCredentials(email, password);
     	return userOpt;
     }
     
-    public User getByEmail(String email)
+    public UserDTO getByEmail(String email)
     {
-    	return userRepository.findByEmail(email);
+    	User getByEmail = userRepository.findByEmail(email);
+    	return userConverter.entityToDto(getByEmail);
     }
 }

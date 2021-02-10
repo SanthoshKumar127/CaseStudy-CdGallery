@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.cd.casestudy.dto.AlbumDTO;
 import com.cd.casestudy.exception.ResourceNotFound;
 import com.cd.casestudy.model.Album;
 import com.cd.casestudy.serviceImp.AlbumService;
@@ -23,16 +23,16 @@ public class AlbumController {
 	
 	@Autowired
 	AlbumService albumService;
+
 	
 	@PostMapping("/new-Album")
-	public Album newAlbum(@RequestBody Album album)
+	public Album newAlbum(@RequestBody AlbumDTO album)
 	{
-		return albumService.newAlbum(album);
-	  
+	 return albumService.newAlbum(album);
 	}
 	
 	@GetMapping("/album")
-	public List getAllALbum()
+	public List<AlbumDTO> getAllALbum()
 	{
 		return albumService.getAllAlbum();
 	}

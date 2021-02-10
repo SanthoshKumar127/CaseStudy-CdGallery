@@ -1,5 +1,6 @@
 package com.cd.casestudy.model;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,8 +8,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="CategoryAlbum")
-public class CategoryAlbum {
+@Table(name ="category")
+public class Category {
 	
 	@Id
 	@Column(name="category_id")
@@ -17,8 +18,11 @@ public class CategoryAlbum {
 	private String categoryName;
 	@Column(name="category_description")
 	private String categoryDescription;
+ 
+	@OneToMany(mappedBy = "category")
+	List<Album> album;
 	
-	public CategoryAlbum() {
+	public Category() {
 		super();
 	}
 
@@ -46,6 +50,6 @@ public class CategoryAlbum {
 		this.categoryDescription = categoryDescription;
 	}
 	
-	
+
 		
 }

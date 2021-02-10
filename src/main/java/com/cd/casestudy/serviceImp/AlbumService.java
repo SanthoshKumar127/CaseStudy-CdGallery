@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import com.cd.casestudy.converter.AlbumConverter;
+import com.cd.casestudy.dto.AlbumDTO;
 import com.cd.casestudy.exception.ResourceNotFound;
 import com.cd.casestudy.model.Album;
 import com.cd.casestudy.repository.AlbumRepository;
@@ -17,20 +20,29 @@ public class AlbumService {
 	@Autowired
 	AlbumRepository albumRepository;
 	
+	@Autowired
+	AlbumConverter albumConverter;
+	
 	// save the new album
-	public Album newAlbum(Album album) {
-		return albumRepository.save(album);
+	public Album newAlbum(@RequestBody AlbumDTO album) 
+	{
+		Album newAlbum = albumConverter.dtoToEntity(album);
+		return albumRepository.save(newAlbum);
 	}
 	
 	//getting all the album
 	
-	public List getAllAlbum() {
-		return albumRepository.findAll();
+	public List<AlbumDTO> getAllAlbum() {
+		
+		List<Album> album = albumRepository.findAll();
+		return albumConverter.entityToDto(album);
+		
 	}
 	
 	//getting the album using albumID
 	public ResponseEntity<Optional<Album>> getAlbumById(long albumId) throws ResourceNotFound {
-		Optional<Album> album = albumRepository.findById(albumId);
+		
+		Optional<Album> album =albumRepository.findById(albumId); 
 		if(!album.isPresent())
 		{
 			throw new ResourceNotFound("Album is not available in this albumId :" + albumId);
