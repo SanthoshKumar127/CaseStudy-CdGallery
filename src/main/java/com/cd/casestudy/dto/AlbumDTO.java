@@ -1,17 +1,12 @@
 package com.cd.casestudy.dto;
 
-import java.io.Serializable;
 
-import com.cd.casestudy.model.Category;
 
-public class AlbumDTO implements Serializable{
+public class AlbumDTO {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	private long albumId;
-	private Category categoryId;
+	private long categoryId;
 	private String albumTitle;
 	private double hirePrice;
 	private int noOfCd;
@@ -28,11 +23,11 @@ public class AlbumDTO implements Serializable{
 	public void setAlbumId(long albumId) {
 		this.albumId = albumId;
 	}
-	public Category getCategory() {
+	public long getCategory() {
 		return categoryId;
 	}
-	public void setCategory(Category category) {
-		this.categoryId = category;
+	public void setCategory(long categoryId) {
+		this.categoryId = categoryId;
 	}
 	public String getAlbumTitle() {
 		return albumTitle;
@@ -58,6 +53,14 @@ public class AlbumDTO implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+
+	@Override
+	public String toString() {
+		return "AlbumDTO [albumId=" + albumId + ", categoryId=" + categoryId + ", albumTitle=" + albumTitle
+				+ ", hirePrice=" + hirePrice + ", noOfCd=" + noOfCd + ", status=" + status + "]";
+	}
+	
 	
 	
 }

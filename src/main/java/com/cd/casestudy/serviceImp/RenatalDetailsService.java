@@ -20,15 +20,16 @@ public class RenatalDetailsService {
 	@Autowired
 	RentalConverter rentalConverter;
 	
-	public void newRentalDetails(@RequestBody RentalDetailsDTO rentalAlbumDetails)
+	public String newRentalDetails(@RequestBody RentalDetails rentalAlbumDetails)
 	{
-		RentalDetails rental =  rentalConverter.dtoToEntity(rentalAlbumDetails);
-		rentalRepository.save(rental);
+		//RentalDetails rental =  rentalConverter.dtoToEntity(rentalAlbumDetails);
+		rentalRepository.save(rentalAlbumDetails);
+		return "Rental Details Successfully inserted";
 	}
 	
 	public List<RentalDetailsDTO> getAllRentalDetails()
 	{
-		List<RentalDetails> rental = rentalRepository.findAll();
+		List<RentalDetails> rental = (List<RentalDetails>) rentalRepository.findAll();
 		return rentalConverter.entityToDto(rental);
 	}
 }

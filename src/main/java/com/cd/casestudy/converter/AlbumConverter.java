@@ -11,34 +11,41 @@ import com.cd.casestudy.model.Album;
 @Component
 public class AlbumConverter {
 
-	public AlbumDTO entityToDto(Album album)
+	public AlbumDTO entityToDto(Album al)
 	{
 		AlbumDTO dto = new AlbumDTO();
 		
-		dto.setAlbumId(album.getAlbumId());
-		dto.setAlbumTitle(album.getAlbumTitle());
-		dto.setCategory(album.getCategoryId());
-		dto.setHirePrice(album.getHirePrice());
-		dto.setNoOfCd(album.getNoOfCd());
-		dto.setStatus(album.getStatus());
+		dto.setAlbumId(al.getAlbumId());
+		dto.setAlbumTitle(al.getAlbumTitle());
+		//dto.setCategory(album.getCategoryId());
+		dto.setHirePrice(al.getHirePrice());
+		dto.setNoOfCd(al.getNoOfCd());
+		dto.setStatus(al.getStatus());
 		return dto;
 	}
 	
 	public List<AlbumDTO> entityToDto(List<Album> album)
 	{
-		return album.stream().map(x-> entityToDto(x)).collect(Collectors.toList());
+		return album.stream().map(al->entityToDto(al)).collect(Collectors.toList());
 	}
 	
-	public Album dtoToEntity(AlbumDTO albumDto)
+	
+	public AlbumDTO dtoToEntity(AlbumDTO albumDto)
 	{
-		Album album = new Album();
+		AlbumDTO album = new AlbumDTO();
 		
-		//album.setAlbumId(albumDto.getAlbumId());
+		album.setAlbumId(albumDto.getAlbumId());
 		album.setAlbumTitle(albumDto.getAlbumTitle());
-		album.setCategoryId(albumDto.getCategory());
+		//album.setCategoryId(albumDto.getCategory());// Create a method to pull the category details in service class
 		album.setHirePrice(albumDto.getHirePrice());
 		album.setNoOfCd(albumDto.getNoOfCd());
 		album.setStatus(albumDto.getStatus());
 		return album;
+	}
+
+	public List<AlbumDTO> dtoToEntity(List<AlbumDTO> album) {
+		
+		
+		return album.stream().map(al->dtoToEntity(al)).collect(Collectors.toList());
 	}
 }

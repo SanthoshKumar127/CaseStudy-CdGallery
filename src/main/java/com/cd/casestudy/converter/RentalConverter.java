@@ -36,7 +36,7 @@ public class RentalConverter {
 	{
 		RentalDetails rental = new RentalDetails();
 		
-		rental.setHireId(dto.getHireId());
+		//rental.setHireId(dto.getHireId());
 		rental.setAlbum(dto.getAlbum());
 		rental.setUser(dto.getUser());
 		rental.setHireDate(dto.getHireDate());

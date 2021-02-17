@@ -24,6 +24,6 @@ public class ValidatorImpl implements Validator {
 
 	@Override
 	public void userValidate(String email, String password) throws ResourceNotFound {
-		// TODO Auto-generated method stub
+		
 		
 	}}

@@ -1,5 +1,6 @@
 package com.cd.casestudy.dto;
 
+import java.util.List;
 
 public class CategoryDTO {
 
@@ -7,6 +8,7 @@ public class CategoryDTO {
 	private long categoryId;
 	private String categoryName;
 	private String categoryDescription;
+	private List<AlbumDTO> albumList;
 	
 	public CategoryDTO() {
 		super();
@@ -35,8 +37,20 @@ public class CategoryDTO {
 	public void setCategoryDescription(String categoryDescription) {
 		this.categoryDescription = categoryDescription;
 	}
-	
-	
+
+	public List<AlbumDTO> getalbumList() {
+		return albumList;
+	}
+
+	public void setalbumList(List<AlbumDTO> albumList) {
+		this.albumList = albumList;
+	}
+
+	@Override
+	public String toString() {
+		return "CategoryDTO [categoryId=" + categoryId + ", categoryName=" + categoryName + ", categoryDescription="
+				+ categoryDescription + ", albumList=" + albumList + "]";
+	}
 	
 	
 }

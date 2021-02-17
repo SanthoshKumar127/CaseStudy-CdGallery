@@ -26,15 +26,37 @@ public class UserService {
 		userRepository.save(newUser);
 	}
 	
-    public List<User> loginCredentials(@RequestParam String email, @RequestParam String password)
+    public String loginCredentials(@RequestParam String email, @RequestParam String password)
     {
     	List<User> userOpt = userRepository.loginCredentials(email, password);
-    	return userOpt;
+    	if(!userOpt.isEmpty())
+    	{
+    		User userDetails = userRepository.findByEmail(email);
+    		if(userDetails.getRoleId()==1)
+    		{
+    			return "Admin Operation";
+    		}
+    		else 
+    		{
+    			return "Customer";
+    		}
+    	}
+    	else
+    	{
+    		return "Error Login with correct email and password";
+    	}
+  
     }
     
     public UserDTO getByEmail(String email)
     {
     	User getByEmail = userRepository.findByEmail(email);
     	return userConverter.entityToDto(getByEmail);
+    }
+    
+    public List<UserDTO> allUser(User user)
+    {
+    	List<User> userDetails = (List<User>) userRepository.findAll();
+    	return userConverter.entityToDto(userDetails);
     }
 }

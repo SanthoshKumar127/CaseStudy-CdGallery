@@ -1,13 +1,9 @@
 package com.cd.casestudy.dto;
 
-import java.io.Serializable;
 
-public class UserDTO implements Serializable{
+public class UserDTO {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	private long userId;
 	private int roleId;
 	private String roleName;
@@ -101,9 +97,14 @@ public class UserDTO implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
-	
-	
 
+
+	@Override
+	public String toString() {
+		return "UserDTO [userId=" + userId + ", roleId=" + roleId + ", roleName=" + roleName + ", email=" + email
+				+ ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
+				+ address + "]";
+	}
+	
+	
 }

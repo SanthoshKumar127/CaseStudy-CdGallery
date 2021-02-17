@@ -24,9 +24,9 @@ public class AlbumService {
 	AlbumConverter albumConverter;
 	
 	// save the new album
-	public Album newAlbum(@RequestBody AlbumDTO album) 
+	public AlbumDTO newAlbum(@RequestBody AlbumDTO album) 
 	{
-		Album newAlbum = albumConverter.dtoToEntity(album);
+		AlbumDTO newAlbum = albumConverter.dtoToEntity(album);
 		return albumRepository.save(newAlbum);
 	}
 	
@@ -34,16 +34,15 @@ public class AlbumService {
 	
 	public List<AlbumDTO> getAllAlbum() {
 		
-		List<Album> album = albumRepository.findAll();
+		List<Album> album = (List<Album>) albumRepository.findAll();
 		return albumConverter.entityToDto(album);
 		
 	}
 	
 	//getting the album using albumID
 	public ResponseEntity<Optional<Album>> getAlbumById(long albumId) throws ResourceNotFound {
-		
 		Optional<Album> album =albumRepository.findById(albumId); 
-		if(!album.isPresent())
+		if(!album.isPresent()==true)
 		{
 			throw new ResourceNotFound("Album is not available in this albumId :" + albumId);
 		}
@@ -55,10 +54,10 @@ public class AlbumService {
 	}
 	
 	//delete the album details
-	public ResponseEntity<Album> delete(long albumId) throws ResourceNotFound
+	public ResponseEntity<AlbumDTO> delete(long albumId) throws ResourceNotFound
 	{
 		Optional<Album> deleteId = albumRepository.findById(albumId);
-		if(!deleteId.isPresent()==true)
+		if(!deleteId.isPresent())
 		{
 			throw new ResourceNotFound("Album is not available in this albumId :" + albumId);
 		}

@@ -1,5 +1,8 @@
 package com.cd.casestudy.converter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.cd.casestudy.dto.UserDTO;
@@ -38,5 +41,10 @@ public class UserConverter {
 		user.setAddress(dto.getAddress());
 		
 		return user;
+	}
+	
+	public List<UserDTO> entityToDto(List<User> user)
+	{
+		return user.stream().map(us->entityToDto(us)).collect(Collectors.toList());
 	}
 }

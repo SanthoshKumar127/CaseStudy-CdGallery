@@ -1,8 +1,6 @@
 package com.cd.casestudy.exception;
 
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-
-public class ResourceNotFound extends Exception{
+public class ResourceNotFound extends RuntimeException{
 	
 	private static final long serialVersionUID = 1L;
 	

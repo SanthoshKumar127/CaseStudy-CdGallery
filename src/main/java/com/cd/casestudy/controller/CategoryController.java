@@ -34,4 +34,10 @@ public class CategoryController {
 		return categoryService.newCategory(dto);
 	}
 	
+	@PostMapping("/category-with-album")
+	public String CategoryWithAlbum(@RequestBody CategoryDTO dto)
+	{
+		
+		return categoryService.categoryAlbum(dto);
+	}
 }

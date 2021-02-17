@@ -35,6 +35,7 @@ public class User {
 	
 	@OneToMany(mappedBy = "user")
 	private List<RentalDetails> rental;
+
 	
 	public User() {
 		super();

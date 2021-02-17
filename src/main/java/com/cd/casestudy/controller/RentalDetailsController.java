@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.cd.casestudy.dto.RentalDetailsDTO;
 import com.cd.casestudy.model.RentalDetails;
 import com.cd.casestudy.serviceImp.RenatalDetailsService;
@@ -23,7 +22,7 @@ public class RentalDetailsController {
 	
 	//save the rental Details
 	@PostMapping("/rentaldetails")
-	public void newRentalDetails(@RequestBody RentalDetailsDTO rentalAlbumDetails)
+	public void newRentalDetails(@RequestBody RentalDetails rentalAlbumDetails)
 	{
 		rentalDetailsService.newRentalDetails(rentalAlbumDetails);
 	}

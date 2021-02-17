@@ -90,7 +90,11 @@ public class RentalDetailsDTO {
 	}
 
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "RentalDetailsDTO [hireId=" + hireId + ", userId=" + userId + ", albumId=" + albumId + ", hireDate="
+				+ hireDate + ", noOfDays=" + noOfDays + ", status=" + status + ", totalPrice=" + totalPrice + "]";
+	}
+
+   
 }
